@@ -38,7 +38,7 @@ jobs:
         working-directory: cpu-cache-lab
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
       - run: python -m unittest discover -s simulator/tests -t .
@@ -51,7 +51,7 @@ jobs:
         working-directory: cpu-cache-lab
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       # PORTABLE=1: runner CPUs vary, so don't build with -march=native.
