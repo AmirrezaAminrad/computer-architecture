@@ -1,0 +1,15 @@
+version,n,tile,threads,impl,seconds_median,gflops_median,seconds_min,gflops_min,verify_max_diff,status,compiler,flags
+naive-ijk,1024,0,1,plain-ijk,3.21557,0.667839,3.06858,0.699831,0.000e+00,ok,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc
+ikj,1024,0,1,plain-ikj,0.207581,10.3453,0.205366,10.4569,1.7053e-13,ok,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc
+tiled,1024,8,1,tiled-ikj,0.229914,9.34037,0.226188,9.49423,1.7053e-13,ok,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc
+tiled,1024,16,1,tiled-ikj,0.188964,11.3645,0.188763,11.3766,1.7053e-13,ok,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc
+tiled,1024,24,1,tiled-ikj,0.161939,13.261,0.160875,13.3488,1.7053e-13,ok,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc
+tiled,1024,32,1,tiled-ikj,0.152831,14.0513,0.150594,14.2601,1.7053e-13,ok,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc
+tiled,1024,48,1,tiled-ikj,0.139274,15.4191,0.13872,15.4807,1.7053e-13,ok,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc
+tiled,1024,64,1,tiled-ikj,0.130196,16.4942,0.130177,16.4966,1.7053e-13,ok,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc
+tiled,1024,96,1,tiled-ikj,0.12552,17.1086,0.124694,17.222,1.7053e-13,ok,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc
+tiled,1024,128,1,tiled-ikj,0.126674,16.9529,0.12635,16.9963,1.7053e-13,ok,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc
+vectorized,1024,0,1,avx2+fma,0.198436,10.8221,0.190664,11.2632,1.7053e-13,ok,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc
+blocked,1024,256,1,4x4-regblock+pack(avx2),0.134004,16.0255,0.129991,16.5202,1.7053e-13,ok,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc
+openmp,1024,256,12,4x4-regblock+pack(avx2)+openmp(12thr),0.096657,22.2176,0.0955277,22.4802,1.7053e-13,ok,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc
+blas,1024,0,1,none,0,0,0,0,0,skipped,g++ 14.2.0,-O3 -march=native -static-libstdc++ -static-libgcc

@@ -1,0 +1,24 @@
+# ZCode workspace state
+.zcode/
+.zcodeignore
+
+
+# webapp (Vite/React)
+node_modules/
+dist/
+
+# OS junk
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+
+# QA screenshots, caches, env
+shots*/
+__pycache__/
+*.pyc
+*.tsbuildinfo
+.env*
+
+# PDFs are not committed
+*.pdf

@@ -1,0 +1,90 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  webapp:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: webapp
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: webapp/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run i18n:check
+      - run: npm run build
+
+  lab-simulator:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+    defaults:
+      run:
+        working-directory: cpu-cache-lab
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m unittest discover -s simulator/tests -t .
+      - run: python -m compileall -q simulator scripts workloads
+
+  lab-cpp-linux:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cpu-cache-lab
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # PORTABLE=1: runner CPUs vary, so don't build with -march=native.
+      - run: make PORTABLE=1
+      - run: make PORTABLE=1 test
+
+  lab-cpp-windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+        working-directory: cpu-cache-lab
+    steps:
+      - uses: actions/checkout@v4
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: false
+          install: >-
+            make
+            mingw-w64-ucrt-x86_64-gcc
+            mingw-w64-ucrt-x86_64-libgomp
+            mingw-w64-ucrt-x86_64-python
+      - run: make PORTABLE=1 PYTHON=python
+      - run: make PORTABLE=1 PYTHON=python test
+
+  lab-cmake:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cpu-cache-lab
+    steps:
+      - uses: actions/checkout@v4
+      - run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DLAB_PORTABLE=ON
+      - run: cmake --build build --parallel
+      - run: ctest --test-dir build --output-on-failure

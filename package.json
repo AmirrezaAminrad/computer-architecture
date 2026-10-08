@@ -1,0 +1,29 @@
+{
+  "name": "computer-architecture",
+  "private": true,
+  "description": "ArchLab (interactive explainer) + cpu-cache-lab (measurement lab) — see README.md",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "npm --prefix webapp run dev -- --open",
+    "build": "npm --prefix webapp run build",
+    "preview": "npm --prefix webapp run preview",
+    "typecheck": "npm --prefix webapp run typecheck",
+    "i18n:check": "npm --prefix webapp run i18n:check",
+    "lab:data": "python cpu-cache-lab/scripts/export_lab_data.py",
+    "lab:build": "mingw32-make -C cpu-cache-lab",
+    "lab:test": "mingw32-make -C cpu-cache-lab test",
+    "lab:run": "mingw32-make -C cpu-cache-lab run",
+    "lab:plot": "mingw32-make -C cpu-cache-lab plot",
+    "ci": "npm run typecheck && npm run i18n:check && npm run build"
+  },
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Amirreza Aminrad",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmirrezaAminrad/computer-architecture.git"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
