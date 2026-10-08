@@ -16,7 +16,7 @@
     "lab:plot": "mingw32-make -C cpu-cache-lab plot",
     "ci": "npm run typecheck && npm run i18n:check && npm run build"
   },
-  "version": "0.1.0",
+  "version": "0.5.0",
   "license": "MIT",
   "author": "Amirreza Aminrad",
   "repository": {

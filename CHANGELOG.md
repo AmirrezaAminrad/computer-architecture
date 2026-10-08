@@ -5,6 +5,8 @@ versioning: [SemVer](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-08
+
 ### Fixed
 - cpu-cache-lab: Linux `--cpu N` now indexes the process's allowed CPUs (works in containers/cpusets) and unpinning restores the original mask.
 - cpu-cache-lab: `-ldl` is passed at link end; `make test` now covers `false_sharing` and the full simulator suite; `PYTHON` is configurable (`python3` on Linux).
