@@ -1,0 +1,7 @@
+kind,order,n_elements,passes,median_ns_per_element,min_ns_per_element
+branch,random,1048576,10,3.5849,3.45006
+branch,ascending,1048576,36,1.1122,1.07859
+branch,descending,1048576,36,1.07213,1.0646
+branchless,random,1048576,70,0.47154,0.4618
+branchless,ascending,1048576,74,0.472927,0.465005
+branchless,descending,1048576,57,0.470934,0.462169

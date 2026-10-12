@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-09-29T19:57:33",
+  "cpu_brand": "13th Gen Intel(R) Core(TM) i5-1334U",
+  "logical_cpus": 12,
+  "physical_ram_bytes": 8216125440,
+  "available_ram_bytes": 1116610560,
+  "cache_info_source": "GetLogicalProcessorInformationEx",
+  "detected_caches": [
+    {"level": 1, "type": "data", "size_bytes": 49152, "line_size": 64, "ways": 12},
+    {"level": 1, "type": "instruction", "size_bytes": 32768, "line_size": 64, "ways": 8},
+    {"level": 2, "type": "unified", "size_bytes": 1310720, "line_size": 64, "ways": 10},
+    {"level": 3, "type": "unified", "size_bytes": 12582912, "line_size": 64, "ways": 12}
+  ],
+  "tsc_cycles_per_second": 2495998380,
+  "compiler": "g++ 14.2.0",
+  "build_flags": "unknown",
+  "command_line": "cache_line",
+  "seed": 0
+}

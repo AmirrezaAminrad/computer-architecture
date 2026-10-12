@@ -1,0 +1,15 @@
+# build artifacts
+build/
+*.o
+*.obj
+
+# generated trace files (regenerable from benchmarks/workloads — see README)
+traces/
+
+# python
+__pycache__/
+*.pyc
+
+# plots are regenerated from CSVs; CSVs and machine.json are kept
+# (remove the next line if you prefer to commit plots too)
+results/*.png

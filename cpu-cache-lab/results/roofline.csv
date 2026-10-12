@@ -1,0 +1,7 @@
+version,N,arithmetic_intensity_flops_per_byte,gflops_median,roof_gflops_at_ai
+naive-ijk,1024,0.2500,0.67,2.40
+ikj,1024,0.2500,10.35,2.40
+tiled,1024,8.0000,17.11,22.22
+vectorized,1024,0.2500,10.82,2.40
+blocked,1024,21.3333,16.03,22.22
+openmp,1024,21.3333,22.22,22.22
